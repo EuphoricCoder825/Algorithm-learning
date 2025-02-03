@@ -1,2 +1,60 @@
 #**LeetCode热题100**
-##Day 1
+1.两数之和
+class Solution {  //这一行开始定义了一个名为 Solution 的类。在C++中，class 关键字用于创建一个新的类，类是封装数据和操作数据的函数的集合
+public:  //public 是一个访问修饰符，它指定了接下来的成员（属性和方法）可以被任何其他代码访问。在C++中，类可以有 public、protected 和 private 三种访问级别。
+    vector<int> twoSum(vector<int>& nums, int target) { //vector<int> 是函数的返回类型，表示这个函数将返回一个整数向量。
+                                                        //twoSum 是函数的名称，它接受两个参数；& 表示 nums 是对一个 vector<int> 类型对象的引用。
+                                                        //使用引用可以避免对象的复制，从而节省内存和时间，特别是对于大型数据结构，如 vector。target 是一个基本数据类型（整数）。
+                                                        //vector 是一个通用的容器，可以存储任意类型的数据，而这里特指存储整数（int）的向量。
+                                                        //nums 是对某个 vector<int> 对象的引用。nums 是变量名，用来在函数或类中引用传递进来的向量对象
+        
+    }
+};
+
+
+今天另外学习的知识点：
+1.int main() { //在C++程序中，main 函数是程序的入口点，程序执行从这里开始。
+2.std::vector<int> myVector;  //std::vector<int> 表示一个存储整数的动态数组。它是一个类型定义，用于创建可以自动调整大小的整数数组。
+                              //这行代码创建了一个名为 myVector 的 std::vector<int> 类型的对象。
+3. myVector.push_back(10);  //push_back 是 std::vector 类的一个成员函数，用于在向量的末尾添加一个新元素。这里添加了整数10。
+4.for (int num : myVector)  //在每次迭代中，num 将被赋予 myVector 中的下一个元素的值。myVector是要遍历的容器对象。
+5.std::cout << num << " ";  //std::cout 是C++标准库中的一个标准输出流对象，用于输出数据。<< 运算符将右侧的值插入到左侧的流中。
+                            //在C++中，标准输入是通过 std::cin 来实现的。
+                            //" "是一个字符串字面量，表示一个空格。它也被插入到 std::cout 中。
+6.std::cout << std::endl;  //std::endl 是C++标准库中的一个常量，表示换行符。它不仅会换行，还会刷新输出缓冲区，确保所有输出都立即显示。
+7. return 0;  //main 函数返回一个整数给操作系统，表示程序的退出状态。
+
+例子一展示：
+int main() {
+    std::vector<int> numbers;
+    int num;
+    std::cout << "请输入一些整数（输入非整数结束）：";
+
+    while (std::cin >> num) {  // 当输入为整数时，读取并存储
+                               //在循环内部，使用 std::cin >> num 从标准输入读取一个整数，并存储到变量 num 中。
+        numbers.push_back(num);  //然后，调用 numbers.push_back(num) 将 num 的值添加到 numbers 向量的末尾。
+    }
+
+    std::cout << "你输入的整数有：";
+    for (int n : numbers) {
+        std::cout << n << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
+例子二展示：
+void printVector(std::vector<int>& vec) {  //这行代码声明了一个名为 printVector 的函数，它接受一个对 std::vector<int>（整数向量）的引用作为参数，并不带返回值（void）。
+                                           //而std::vector<int> 表示一个存储整数的动态数组。std::vector<int>& vec创建了一个名为 vec 的 std::vector<int> 类型的对象。
+    for (int num : vec) {  //num 是循环变量，它在每次迭代中被赋予 vec 中的下一个元素的值。
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+}  //这行代码标志着 printVector 函数定义的结束。
+
+int main() {
+    std::vector<int> myNumbers = {1, 2, 3, 4, 5};  //这行代码创建了一个名为 myNumbers 的 std::vector<int> 类型的对象，
+    printVector(myNumbers); // 输出: 1 2 3 4 5
+    return 0;
+}
