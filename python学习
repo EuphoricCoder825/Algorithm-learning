@@ -1,0 +1,32 @@
+encoding:utf-8
+import math
+user_age = str(input("您的年龄是多少？"))
+print("知道了，您的年龄是"+ user_age +"岁！")
+user_10 = float(user_age) + 10
+print("而且您10年后是"+ str(user_10) +"岁！")
+a = 10.5
+print(int(a))
+user_weight = float(input("请输入您的体重 (kg为单位):"))
+user_height = float(input("您的身高是多少？以cm为单位"))
+print(type(user_weight))
+print(type(user_height))
+BMI = (user_weight) / (user_height ** 2)
+print("您的BMI是"+str(BMI))
+if BMI <= 18.5:
+    print("属于偏瘦范围")
+elif 18.5 < BMI <= 25:
+    print("属于正常范围")
+elif 25 < BMI <= 30:
+    print("属于偏胖范围")
+else:
+    print("属于肥胖范围")
+mood_index = float(input("女朋友今天心情指数是："))
+if mood_index >= 60:
+    print("恭喜你！可以打游戏")
+else:
+    is_at_home = raw_input("女朋友待会儿在家吗？(请输入“在”或“不在”)")
+    print(type(is_at_home))
+    if is_at_home =="不在":
+        print("恭喜你！自由了")
+    else:
+        print("为了保住小命，还是别打了~")
