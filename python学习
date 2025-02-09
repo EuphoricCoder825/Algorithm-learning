@@ -30,3 +30,36 @@ else:
         print("恭喜你！自由了")
     else:
         print("为了保住小命，还是别打了~")
+s = "hello"
+s = s.upper()
+print(s)
+shopping_list = ["鼠标","键盘"]
+shopping_list.append("书桌")
+shopping_list.remove("键盘")
+print(shopping_list)
+print(len(shopping_list))
+print(shopping_list[0])
+shopping_list[1]="书本"
+print(shopping_list)
+price = [1,7,3,23,16,68,24]
+print(max(price))
+print(min(price))
+print(sorted(price))
+
+contacts = {"帅哥A":"17352635263","帅哥B":"17252635463"}
+contacts["美女A"] = "16382635273"
+del contacts["帅哥A"]
+print("美女A" in contacts)#只能看到True和False表达词典里是否有这个键
+print(len(contacts))
+print(contacts)
+
+slang_dict = {"A":"aa","B":"b"}
+slang_dict["C"] = "cc"
+slang_dict["E"] = 'ee'
+query = input("请输入你想查询的字母：")
+if query in slang_dict:
+    print("您查询的" + query + "含义如下：")
+    print(slang_dict[query])
+else:
+    print("您查询的字母暂未收录进本词条")
+    print("本词典收录的词条数为：" + str(len(slang_dict)) + "个" )
