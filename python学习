@@ -1,35 +1,43 @@
 encoding:utf-8
 import math
-user_age = str(input("您的年龄是多少？"))
+user_age = input("您的年龄是多少？")
 print("知道了，您的年龄是"+ user_age +"岁！")
+print(type(user_age))
 user_10 = float(user_age) + 10
 print("而且您10年后是"+ str(user_10) +"岁！")
 a = 10.5
 print(int(a))
-user_weight = float(input("请输入您的体重 (kg为单位):"))
-user_height = float(input("您的身高是多少？以cm为单位"))
-print(type(user_weight))
-print(type(user_height))
-BMI = (user_weight) / (user_height ** 2)
-print("您的BMI是"+str(BMI))
-if BMI <= 18.5:
-    print("属于偏瘦范围")
-elif 18.5 < BMI <= 25:
-    print("属于正常范围")
-elif 25 < BMI <= 30:
-    print("属于偏胖范围")
-else:
-    print("属于肥胖范围")
+try:
+    user_weight = float(input("请输入您的体重 (kg为单位):"))
+    user_height = float(input("您的身高是多少？以cm为单位"))
+    print(type(user_weight))
+    print(type(user_height))
+    BMI = (user_weight) / (user_height ** 2)
+    print("您的BMI是"+str(BMI))
+    if BMI <= 18.5:
+        print("属于偏瘦范围")
+    elif 18.5 < BMI <= 25:
+        print("属于正常范围")
+    elif 25 < BMI <= 30:
+        print("属于偏胖范围")
+    else:
+        print("属于肥胖范围")
+except ValueError:
+    print("输入不合理数字，请重新运行程序，并输入正确的数字")
+except ZeroDivisionError:
+    print("身高不能为零，请重新运行程序，并输入正确的数字")
+except:
+    print("发生了未知错误，请重新运行程序，并输入正确的数字")
 mood_index = float(input("女朋友今天心情指数是："))
 if mood_index >= 60:
     print("恭喜你！可以打游戏")
 else:
-    is_at_home = raw_input("女朋友待会儿在家吗？(请输入“在”或“不在”)")
+    is_at_home = input("女朋友待会儿在家吗？(请输入“True”或“False”)")
     print(type(is_at_home))
-    if is_at_home =="不在":
-        print("恭喜你！自由了")
-    else:
+    if is_at_home:
         print("为了保住小命，还是别打了~")
+    else:
+        print("恭喜你！自由了")
 s = "hello"
 s = s.upper()
 print(s)
@@ -63,3 +71,285 @@ if query in slang_dict:
 else:
     print("您查询的字母暂未收录进本词条")
     print("本词典收录的词条数为：" + str(len(slang_dict)) + "个" )
+
+temperature_dict = {"111":"36.2","112":"36.3","113":"36.5","114":"37.0","115":"37.5"}
+for staff_id,temperature in temperature_dict.items():
+    if float(temperature) >= 37.0:
+        print(staff_id)
+
+total = 0 #先定义变量，用来储存后面循环的结果。
+for i in range(1,101):
+    total = total + i
+print(total)
+
+list1 = ["你","好","吗","兄","弟"]
+for i in range(len(list1)):
+    print(list1[i])
+for i in list1:
+    print(i)
+i = 0
+while i < len(list1):
+    print(list1[i])
+    i = i + 1 #三个用法都可以打出你好吗兄弟，while没有in，需要定义变量，且len是5，list1[5]不存在，所以是<。
+
+这一部分是我的答案：容易将q转换为str型
+data = float(input("请输入你想求平均值的数据，按q结束"))
+i = 0
+sum = 0
+while data != "q":
+    sum += data
+    i += 1
+    data = data(input("请输入你想求平均值的数据，按q结束"))
+answer = sum / i
+print(answer)
+
+下面一部分是修改后的代码，user_input的q不会影响转为float型,且sum容易和sum()混合在一起，改用total更好。
+user_input = (input("请输入你想求平均值的数据，按q结束"))
+i = 0
+total = 0
+while user_input != "q":
+    data = float(user_input)
+    total += data
+    i += 1
+    user_input = input("请继续输入你想求平均值的数据，按q结束")
+    #在 while 循环中，user_input 的值只在循环开始之前被赋值一次，它在循环内部无法被更新。因此需要再次获取。
+answer = total / i
+print(answer)
+
+但是以上仍存在问题，如果一开始就输入q，则answer = 0/0 不成立，故改为：
+user_input = (input("请输入你想求平均值的数据，按q结束"))
+i = 0
+total = 0
+while user_input != "q":
+    data = float(user_input)
+    total += data
+    i += 1
+    user_input = input("请继续输入你想求平均值的数据，按q结束")
+if total == 0:
+    result = 0
+else:
+    answer = total / i
+    print("您的数据的平均值为:" + str(answer))
+
+gpa_dict = {"区咏运":4.10,"聂文萱":3.98,"陈姝羽":3.87}
+for name,gpa in gpa_dict.items():
+    print("{0}你好，你的gpa成绩为：{1:.2f}".format(name,gpa))#1:.2f即为保留两位小数
+
+def calculate_sector(central_angle,radius):
+    sector_area = central_angle / 360 * 3.14 * radius ** 2
+    print(f"此扇形面积为:{sector_area}")
+    return sector_area
+sector_area_1 = calculate_sector(50,5)
+sector_area_2 = calculate_sector(20,4)
+print(sector_area_1,sector_area_2)
+
+def BMI(height,weight):
+ BMI = (weight) / (height ** 2)
+ print("您的BMI是:"+str(BMI))
+ if BMI <= 18.5:
+     category = "偏瘦"
+ elif BMI <= 25:
+     category = "正常"
+ elif BMI <= 30:
+     category = "偏胖"
+ else:
+     category = "肥胖"
+ print(f"您的BMI分类为：{category}")
+ return BMI
+
+BMI1=BMI(1.63,59)
+print(BMI1)
+
+import statistics
+print(statistics.median([12,14,62,35,733,234]))
+
+#定义属性——创建对象
+class CuteCat:
+    def __init__(self,cat_name,cat_age,cat_home):
+        self.name = cat_name
+        self.age = cat_age
+        self.home = cat_home
+#定义方法——创建对象
+    def speak(self):
+        print("喵" * self.age)
+    def think(self,content):
+        self.content = content
+        print(f"小猫{self.name}在思考{self.content}。")
+cat1 = CuteCat("Jojo",3,"Jingo")
+cat1.speak()
+cat1.think("今晚吃什么")
+print(f"猫猫的名字是{cat1.name}，{cat1.age}岁了，家在{cat1.home}。")
+
+#练手
+class student:
+    def __init__(self,name,number,Chinese,Math,English):
+        self.name = name
+        self.number = number
+        self.Chinese = Chinese
+        self.Math = Math
+        self.English = English
+student1 = student("Jenny",23748234,98,100,99.5)
+print(f"{student1.name}的语文成绩为{student1.Chinese},数学成绩为{student1.Math},英语成绩为{student1.English}")
+
+更好的答案
+class student:
+    def __init__(self,name,number):
+        self.name = name
+        self.number = number
+        self.grades = {"Chinese":0,"Math":0,"English":0}
+    def set_grade(self,course,grade):
+        if course in self.grades:
+            self.grades[course] = grade
+    def print_grades(self):
+        print(f"学生{self.name}(学号：{self.number})的成绩为:")
+        for course in self.grades:
+            print(f"{course}:{self.grades[course]}分")
+
+student1 = student("Jenny","23748234")
+student2 = student("Jessica","23976123")
+student2.set_grade("Math",95)
+student2.set_grade("Chinede",94)
+student2.set_grade("English",100)
+student2.print_grades()
+print(student1.name)
+print(student2.grades)
+print(student1.number)
+
+#隔天再写
+class student:
+    def __init__(self,name,id):
+        self.name = name
+        self.id = id
+        self.grades = {"语文":0,"数学":0,"英语":0}
+    def set_grade(self,course,grade):
+        if course in self.grades:
+            self.grades[course] = grade
+    def print_grade(self):
+        print(f"学生{self.name}(学号:{self.id})的成绩为：")
+        for course in self.grades:
+            print(f"{course}:{self.grades[course]}")
+
+student1 = student("Jenny","12345678")
+student1.set_grade("语文",95)
+student1.set_grade("数学",100)
+student1.print_grade()
+
+类继承1：只增加子类的方法
+class Mammal:
+    def __init__(self,name,sex):
+        self.name = name
+        self.sex = sex
+        self.num_eyes = 2
+    def breathe(self):
+        print(self.name + "在呼吸")
+    def poop(self):
+        print(self.name + "在拉屎")
+
+class Human(Mammal):
+    # def __init__(self):
+    #     self.has_tail = False 如果有这一行代码，Human子类就优先执行这一段，就用不到Mammal父类的功能了
+    def read(self):
+        print(self.name + "在读书")
+class Cat(Mammal):
+    # def __init__(self):
+    #     self.has_tail = True 如果有这一行代码，Cat子类就没有Mammal父类的功能了
+    def scratch_sofa(self):
+        print(self.name + "在抓沙发")
+
+cat1 = Cat("Jenny","女")
+print(cat1.name)
+cat1.breathe()
+cat1.scratch_sofa()
+
+类继承2：增加子类的属性和方法
+class Mammal:
+    def __init__(self,name,sex):
+        self.name = name
+        self.sex = sex
+        self.num_eyes = 2
+    def breathe(self):
+        print(self.name + "在呼吸")
+    def poop(self):
+        print(self.name + "在拉屎")
+
+class Human(Mammal):
+    def __init__(self,name,sex):
+        super().__init__(name,sex)
+        self.has_tail = False
+    def read(self):
+        print(self.name + "在读书")
+class Cat(Mammal):
+    def __init__(self,name,sex):
+        super().__init__(name,sex)
+        self.has_tail = True
+    def scratch_sofa(self):
+        print(self.name + "在抓沙发")
+
+cat1 = Cat("Jenny","女")
+print(cat1.name) #属性没有括号()，只有方法才有括号()
+cat1.breathe()
+cat1.scratch_sofa()
+human1 = Human("Jennie","女")
+print(type(human1.has_tail))
+print(human1.has_tail)
+
+类继承练习（全职员工与兼职员工工资计算方法）
+class staff:
+    def __init__(self,name,id):
+        self.name = name
+        self.id = id
+    def print_info(self):
+        print(f"员工{self.name}(员工编号为：{self.id})")
+class full_time(staff):
+    def __init__(self,name,id,monthly_salary):
+        super().__init__(name,id)
+        self.monthly_salary = monthly_salary
+    def calculate_monthly_pay(self):
+        print("该员工的月工资为" + str(self.monthly_salary))
+        print(f"该员工的月工资为{self.monthly_salary}")
+class part_time(staff):
+    def __init__(self,name,id,daily_salary,work_days):
+        super().__init__(name,id)
+        self.daily_salary = daily_salary
+        self.work_days = work_days
+    def calculate_monthly_pay(self):
+        print("该员工的月工资为" + str(self.daily_salary * self.work_days))
+        print(f"该员工的月工资为{self.daily_salary * self.work_days}")
+
+staff1 = full_time("小红",16352736,5000)
+staff2 = part_time("小明",23872354,120,20)
+staff1.print_info()
+staff1.calculate_monthly_pay()
+staff2.print_info()
+staff2.calculate_monthly_pay()
+
+f = open("E:\找工作\算法学习\python学习笔记\文本读写.txt","r",encoding = "utf-8")
+# line = f.readline()
+# while line !="":
+#     print(line)
+#     line =f.readline()
+
+lines = f.readlines()  # 把每行内容储存到列表里
+for line in lines:
+    print(line)
+f.close() #关闭文件，释放资源
+
+with open("E:\找工作\算法学习\python学习笔记\文本读写.txt","r",encoding = "utf-8") as f:
+    print(f.read())
+
+f = open("./text.txt","r",encoding="utf-8")
+print(f.read())
+f.close()
+函数调用和方法调用都要加上括号()。用于明确表示这是一个调用操作，无论是调用一个函数还是调用一个对象的方法。
+
+with open("./text.txt","r",encoding="utf-8") as f:
+    print(f.readline())
+    print(f.readline())
+
+with open("poem.txt","w",encoding="utf-8") as f:
+    f.write("我欲乘风归去，\n又恐琼楼玉宇，\n高处不胜寒。")
+with open("poem.txt","r+",encoding="utf-8") as f:
+    f.read()
+    f.write("\n起舞在人间，\n何似在人间。")
+    f.seek(0)
+    print(f.read())
